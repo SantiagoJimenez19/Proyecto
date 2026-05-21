@@ -17,10 +17,7 @@ Ejecutar con:
 import pytest
 from exact_cover import solve_exact_cover, solve_exact_cover_base
 
-
-# ---------------------------------------------------------------------------
 # Utilidad de validación
-# ---------------------------------------------------------------------------
 
 def is_valid_exact_cover(universe, solution):
     """Verifica matemáticamente que la solución es una partición exacta."""
@@ -32,12 +29,10 @@ def is_valid_exact_cover(universe, solution):
     return sorted(covered) == sorted(universe)
 
 
-# ---------------------------------------------------------------------------
 # Caso Trivial
-# ---------------------------------------------------------------------------
 
 class TestTrivialCase:
-    """Caso pequeño — validar funcionamiento básico de ambos programas."""
+    """Caso pequeño """
 
     universe = [1, 2, 3, 4, 5, 6, 7]
     subsets  = [{1, 2, 3}, {4, 5}, {6, 7}, {1, 4}, {2, 5, 6, 7}, {3, 4, 5, 6, 7}]
@@ -62,20 +57,15 @@ class TestTrivialCase:
     def test_both_programs_agree(self):
         r1 = solve_exact_cover_base(self.universe, self.subsets)
         r2 = solve_exact_cover(self.universe, self.subsets)
-        # Ambos deben cubrir el mismo universo (puede haber más de una solución válida)
         assert is_valid_exact_cover(self.universe, r1)
         assert is_valid_exact_cover(self.universe, r2)
 
-
-# ---------------------------------------------------------------------------
 # Casos de borde
-# ---------------------------------------------------------------------------
 
 class TestEdgeCases:
-    """Casos límite para validar robustez."""
 
     def test_empty_universe(self):
-        """Un universo vacío ya está cubierto — la solución es la lista vacía."""
+        """Un universo vacío ya está cubierto la solución es la lista vacía."""
         result = solve_exact_cover([], [])
         assert result == []
 
@@ -99,7 +89,7 @@ class TestEdgeCases:
         assert result is None
 
     def test_overlapping_only(self):
-        """Todos los subconjuntos se solapan — sin solución."""
+        """Todos los subconjuntos se solapan no hay solución."""
         result = solve_exact_cover([1, 2, 3], [{1, 2}, {1}])
         assert result is None
 
@@ -112,10 +102,7 @@ class TestEdgeCases:
         result = solve_exact_cover([1, 2, 3], [{3, 1, 2}])
         assert result == [(1, 2, 3)]
 
-
-# ---------------------------------------------------------------------------
 # Validación de resultados (correctitud matemática)
-# ---------------------------------------------------------------------------
 
 class TestMathematicalCorrectness:
     """Verifica las propiedades formales de la cobertura exacta."""
@@ -149,9 +136,7 @@ class TestMathematicalCorrectness:
             assert is_valid_exact_cover(universe, result)
 
 
-# ---------------------------------------------------------------------------
 # Prueba de estrés moderada
-# ---------------------------------------------------------------------------
 
 class TestStressCase:
     """Base de datos moderado para medir capacidad de respuesta."""
