@@ -37,7 +37,7 @@ pip install -e .
 ## Uso rápido
 
 ```python
-from exact_cover import solve_exact_cover
+from solver import solve_exact_cover
 
 universe = [1, 2, 3, 4, 5, 6, 7]
 subsets  = [
