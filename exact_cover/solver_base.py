@@ -1,12 +1,11 @@
 """
-solver_base.py — Algoritmo base para Exact Cover (Programa 1).
+solver_base.py — Brute-force algorithm for Exact Cover (Programa 1).
 
-Implementa fuerza bruta con backtracking simple:
-  - Itera linealmente sobre todos los subconjuntos disponibles.
-  - Verifica que no haya solapamiento con los elementos ya cubiertos.
-  - Sin filtrado previo ni poda algebraica.
-
-Se incluye como referencia para comparar rendimiento con el Programa 2.
+Implements brute force with simple backtracking:
+  - Iterates linearly over all available subsets.
+  - Verifies there is no overlap with already covered elements.
+  - No pre-filtering.
+Included as a baseline to compare performance against Programa 2.
 """
 
 from __future__ import annotations
@@ -18,27 +17,7 @@ def solve_exact_cover_base(
     subsets: Collection[Collection[Hashable]],
 ) -> Optional[list[tuple]]:
     """
-    Resuelve el problema Exact Cover con backtracking de fuerza bruta.
-
-    Parameters
-    ----------
-    universe : iterable
-        Colección de elementos que deben ser cubiertos exactamente.
-    subsets : iterable de iterables
-        Familia de subconjuntos candidatos.
-
-    Returns
-    -------
-    list[tuple] | None
-        Lista de tuplas (ordenadas) que forman la cobertura exacta,
-        o ``None`` si no existe solución.
-
-    Examples
-    --------
-    >>> universe = [1, 2, 3, 4, 5, 6, 7]
-    >>> subsets  = [{1,2,3}, {4,5}, {6,7}]
-    >>> solve_exact_cover_base(universe, subsets)
-    [(1, 2, 3), (4, 5), (6, 7)]
+    Solves the Exact Cover problem using brute force.
     """
     universo_set = set(universe)
     subconjuntos_sets = [set(s) for s in subsets]
@@ -48,7 +27,7 @@ def solve_exact_cover_base(
         subconjuntos_disponibles: list[set],
         solucion_actual: list[set],
     ) -> Optional[list[set]]:
-        # CASO BASE: todos los elementos cubiertos
+     
         if not elementos_faltantes:
             return solucion_actual
 
@@ -72,9 +51,9 @@ def solve_exact_cover_base(
 
     solucion_final = backtrack(universo_set, subconjuntos_sets, [])
 
-    # Formateamos el resultado para que se vea ordenado al imprimirlo
+    
     if solucion_final:
-        # Convertimos los sets de vuelta a listas/tuplas ordenadas
+        
         return [tuple(sorted(list(s))) for s in solucion_final]
     else:
-        return None  # <--- Cambia el string por None
+        return None  
