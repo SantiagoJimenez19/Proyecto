@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+exact_cover/__init__.py
+exact_cover/solver.py
+exact_cover/solver_base.py
+exact_cover.egg-info/PKG-INFO
+exact_cover.egg-info/SOURCES.txt
+exact_cover.egg-info/dependency_links.txt
+exact_cover.egg-info/requires.txt
+exact_cover.egg-info/top_level.txt
+tests/test_exact_cover.py

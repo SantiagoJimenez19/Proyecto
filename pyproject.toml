@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exact-cover"
+version = "1.0.0"
+description = "Solución al problema Exact Cover mediante Backtracking con poda algebraica"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+  { name = "Santiago Emmanuel Jimenez Perez" }
+]
+requires-python = ">=3.9"
+keywords = ["exact-cover", "backtracking", "combinatorics", "algorithms", "NP-complete"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Intended Audience :: Education",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "jupyter"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["exact_cover*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
