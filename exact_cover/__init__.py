@@ -1,7 +1,7 @@
 """
 exact_cover
 ===========
-Solución al problema Exact Cover mediante Backtracking con poda algebraica.
+Solución al problema Exact Cover mediante Backtracking.
 
 Uso rápido
 ----------
